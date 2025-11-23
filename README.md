@@ -13,7 +13,7 @@
 <p align="center">
   <b>NT-3104 – Web Systems and Technologies, System Integration, System Architecture</b><br>
   Batangas State University – Alangilan Campus<br>
-  <a href="https://github.com/BjorkRico">Rico, B-jork M.</a> — Full Stack 
+  <a href="https://github.com/BjorkRico">Rico, B-jork M.</a> <br> Full Stack 
 </p>
 
 <hr>
@@ -108,6 +108,6 @@ Email: admin@batstate-u.edu.ph
 Password: admin123
 
 ## 💮 Acknowledgments
-💻 My laptop – For surviving countless PHP errors and XAMPP restarts
-👨‍💻 Team ComLogs – Andrei, Hannah, Jenrick — thank you for the collaboration 
+💻 My laptop – For surviving countless PHP errors and XAMPP restarts <br>
+👨‍💻 Team ComLogs – Andrei, Hannah, Jenrick — thank you for the collaboration <br>
 🐾 Ulap, Tala, Ulan, Sinag, and Nyebe – My fur babies who kept me sane during late-night coding 
