@@ -1,8 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7d5a7f8<img width="2000" height="2000" alt="—Pngtree—illustration of pixel notebook_4757613" src="https://github.com/user-attachments/assets/0057c7cf-4478-4d76-a153-960726dabe89" />
-5-9c4e-4f1e-b1d0-c0f2b4f8d7a1" width="100" alt="ComLogs Logo">
-</p>
-![Uploading —Pngtree—illustration of pixel notebook_4757613.png…]()
+  
 
 <h1 align="center">ComLogs</h1>
 
