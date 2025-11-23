@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <b>NT-3104 – Web Systems and Technologies, System Integration, System Architecture</b><br>
+  <b>NT-3104 – Web Systems and Technologies, System Integration, System Analysis</b><br>
   Batangas State University – Alangilan Campus<br>
   <a href="https://github.com/BjorkRico">Rico, B-jork M.</a> <br> Full Stack 
 </p>
