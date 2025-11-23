@@ -1,5 +1,6 @@
 <p align="center">
-  
+  <img src="[https://github.com/user-attachments/assets/7d5a7f85-9c4e-4f1e-b1d0-c0f2b4f8d7a1](https://github.com/Zomoi/ComLogs-A-Computer-Laboratory-and-Maintenance-Management-System/blob/156a3ad826e500a551d7288b366222b8b81d08eb/%E2%80%94Pngtree%E2%80%94illustration%20of%20pixel%20notebook_4757613.png )" width="100" alt="ComLogs Logo">
+</p>
 
 <h1 align="center">ComLogs</h1>
 
