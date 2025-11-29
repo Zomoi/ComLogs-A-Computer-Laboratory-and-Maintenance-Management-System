@@ -37,7 +37,7 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
 <body>
 <div class="container">
     <aside class="sidebar">
-        <div class="logo">CLMS</div>
+        <img src="images/logo.png" class="logo">
         <nav>
             <ul>
                 <li class="active" data-target="dashboard">Dashboard</li>
