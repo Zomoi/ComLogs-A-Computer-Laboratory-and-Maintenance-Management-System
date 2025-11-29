@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        
+        {
+            "type": "chrome",
+            "name": "http://localhost/ComLogs-A-Computer-Laboratory-and-Maintenance-Management-System/COMLOGS/index.php",
+            "request": "launch",
+            "url": "http://localhost/ComLogs-A-Computer-Laboratory-and-Maintenance-Management-System/COMLOGS/index.php"
+        }
+    ]
+}

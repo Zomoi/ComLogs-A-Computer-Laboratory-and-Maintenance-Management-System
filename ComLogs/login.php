@@ -40,46 +40,65 @@ if ($_POST) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ComLogs Login (Testing Mode)</title>
+    <title>ComLogs Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f0f2f5;
+            background: #caf0f8;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            background-image: url('Images/login_bg.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .logo{
+            display:block; 
+            margin:0 auto 0px; 
+            width:240px;
+        }
+        .login {
+            font-family: 'Aharoni', Verdana, sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 2px;
+            color: #00B4D8
         }
         .box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: rgba(236, 247, 253, 1);
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: 0px 12px 12px rgba(239, 232, 232, 0.19);
             width: 350px;
-        }
-        .box h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #2c3e50;
         }
         input {
             width: 100%;
             padding: 10px;
             margin: 8px 0;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 10px;
             box-sizing: border-box;
         }
         button {
-            width: 100%;
-            padding: 10px;
-            background: #3498db;
+            font-size: 1rem;
+            text-align: center;
+            width: 30%;
+            padding: 15px;
+            background: #00B4D8;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 25px;
             cursor: pointer;
-            margin-top: 10px;
+            margin: 5px auto 0;      
+            display: block;  
+        }
+        button:hover {
+            background: linear-gradient(to left, #0077b6, #03054e);
+            transform: scale(1.03);
+            box-shadow: 0 4px 10px rgba(2, 136, 209, 0.3);
         }
         .error {
             color: #e74c3c;
@@ -92,17 +111,18 @@ if ($_POST) {
 </head>
 <body>
     <div class="box">
-        <h2>ComLogs Login</h2>
+        <img src="images/logo.png" class="logo">
+        <h2 class="login">LOG IN</h2>
         <?php if ($error): ?>
             <div class="error"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
         <form method="POST">
-            <input type="email" name="email" value="admin@batstate-u.edu.ph" required>
-            <input type="password" name="password" placeholder="Any password works" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
-        <p style="text-align:center; margin-top:15px; color:#777; font-size:0.9em;">
-        <strong>Enter your credentials. </strong>  
+        <p style="text-align:center; margin-top:10px; color:#777; font-size:0.8em;">
+        Enter your credentials. 
         </p>
     </div>
 </body>
