@@ -1,25 +1,26 @@
 <?php
 include 'config.php';
 
-// Get all computers
-$computers = $pdo->query("SELECT id, ip_address FROM computers")->fetchAll();
+$computers = $pdo->query("SELECT id, ip_address, status FROM computers")->fetchAll();
 
 foreach ($computers as $pc) {
+    // 🔒 CRITICAL: Skip ping if manually set to "Under Maintenance"
+    if ($pc['status'] === 'under_maintenance') {
+        continue;
+    }
+
     $ip = $pc['ip_address'];
     $id = $pc['id'];
 
-    // Validate IP
     if (!filter_var($ip, FILTER_VALIDATE_IP)) {
         continue;
     }
 
-    // Build ping command (Windows vs Linux)
     $isWin = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
     $ping = $isWin 
         ? "ping -n 1 -w 1000 " . escapeshellarg($ip)
         : "ping -c 1 -W 1 " . escapeshellarg($ip);
 
-    // Execute ping
     $output = shell_exec($ping . ' 2>&1');
     $online = false;
 
@@ -31,12 +32,11 @@ foreach ($computers as $pc) {
         }
     }
 
-    // Update status
-    $status = $online ? 'online' : 'offline';
-    $pdo->prepare("UPDATE computers SET status = ? WHERE id = ?")->execute([$status, $id]);
+    // Only update if NOT under maintenance
+    $newStatus = $online ? 'online' : 'offline';
+    $pdo->prepare("UPDATE computers SET status = ? WHERE id = ?")->execute([$newStatus, $id]);
 }
 
-// Go back to index
 header("Location: index.php");
 exit();
 ?>
