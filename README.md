@@ -13,7 +13,10 @@
 <p align="center">
   <b>NT-3104 – Web Systems and Technologies, System Integration, System Analysis</b><br>
   Batangas State University – Alangilan Campus<br>
-  <a href="https://github.com/BjorkRico">Rico, B-jork M.</a> <br> Full Stack 
+  <a href="https://github.com/BjorkRico">Rico, B-jork M. <br></a>
+    Cadevida, Andrei <br>
+    Magtaas, Jenrick <br>
+    Lumanglas, Hannah 
 </p>
 
 <hr>

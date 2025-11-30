@@ -37,7 +37,7 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
 <body>
 <div class="container">
     <aside class="sidebar">
-        <div class="logo">CLMS</div>
+        <img src="images/logo.png" class="logo">
         <nav>
             <ul>
                 <li class="active" data-target="dashboard">Dashboard</li>
@@ -60,6 +60,21 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
           <div class="card"><div>Active<br><span><?= htmlspecialchars($stats['active']) ?></span></div></div>
           <div class="card"><div>Offline<br><span><?= htmlspecialchars($stats['offline']) ?></span></div></div>
         </div>
+        <form method="POST" action="check_status.php" style="margin: 20px 0;">
+          <button type="submit" style="
+            background: linear-gradient(to right, #4fc3f7, #29b6f6);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(2, 136, 209, 0.2);
+            font-size: 1em;
+          ">
+            🔄 Check PC Status (Ping All)
+          </button>
+        </form>
         <table>
           <thead>
             <tr><th>PC Name</th><th>IP</th><th>MAC</th><th>Location</th><th>Status</th></tr>
