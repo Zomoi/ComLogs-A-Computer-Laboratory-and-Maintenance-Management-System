@@ -74,7 +74,7 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
 
         <table>
           <thead>
-            <tr><th>PC Name</th><th>IP</th><th>MAC</th><th>Location</th><th>Status</th></tr>
+            <tr><th>PC Number</th><th>IP</th><th>MAC</th><th>Location</th><th>Status</th></tr>
           </thead>
           <tbody>
             <?php foreach ($computers as $pc): ?>
@@ -144,10 +144,10 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
       <section data-page="computers" class="page">
         <h1>Computers</h1>
         <p>Manage all computer records in the laboratory.</p>
-        <button class="add-computer" onclick="location.href='add_computer.php'">+ Add New Computer</button>
+        <button class="add-computer" onclick="location.href='add_computers.php'">+ Add New Computer</button>
         <table>
           <thead>
-            <tr><th>PC Name</th><th>IP</th><th>MAC</th><th>Location</th><th>Status</th><th>Actions</th></tr>
+            <tr><th>PC Number</th><th>IP</th><th>MAC</th><th>Location</th><th>Status</th><th>Actions</th></tr>
           </thead>
           <tbody>
             <?php
@@ -190,7 +190,7 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
           <thead>
             <tr>
               <th>Date</th>
-              <th>PC Name</th>
+              <th>PC Number</th>
               <th>Issue</th>
               <th>Technician</th>
               <th>Status</th>

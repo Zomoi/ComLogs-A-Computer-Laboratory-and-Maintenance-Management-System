@@ -112,7 +112,7 @@ if ($_POST) {
 
         <form method="POST">
             <div class="form-group">
-                <label for="pc_name">PC Name *</label>
+                <label for="pc_name">PC Number *</label>
                 <input type="text" id="pc_name" name="pc_name" required>
             </div>
 

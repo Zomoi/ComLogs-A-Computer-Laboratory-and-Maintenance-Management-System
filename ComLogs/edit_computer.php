@@ -128,7 +128,7 @@ if ($_POST) {
             <input type="hidden" name="id" value="<?= $computer['id'] ?>">
 
             <div class="form-group">
-                <label for="pc_name">PC Name *</label>
+                <label for="pc_name">PC Number *</label> 
                 <input type="text" id="pc_name" name="pc_name" value="<?= htmlspecialchars($computer['pc_name']) ?>" required>
             </div>
 
