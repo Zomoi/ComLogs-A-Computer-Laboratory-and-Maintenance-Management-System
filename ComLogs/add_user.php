@@ -2,7 +2,7 @@
 session_start();
 include 'config.php';
 
-// Only admin can access
+// Only admin can access 
 if ($_SESSION['user_role'] !== 'admin') {
     die("Access denied.");
 }
@@ -20,7 +20,7 @@ if ($_POST) {
     } else {
         try {
             $hashed = password_hash($password, PASSWORD_DEFAULT);
-            $pdo->prepare("INSERT INTO users (name, email, password, role, status) VALUES (?, ?, ?, ?, 'active')")
+            $pdo->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)")
                 ->execute([$name, $email, $hashed, $role]);
             $message = "Technician account created successfully!";
         } catch (Exception $e) {

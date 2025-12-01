@@ -15,7 +15,7 @@ if (!isset($_GET['id'])) {
 
 $user_id = (int)$_GET['id'];
 
-// Prevent editing the main admin (optional safety)
+// Prevent editing the main admin (optional safety) 
 $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ? AND role = 'technician'");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch();
@@ -29,18 +29,17 @@ $message = '';
 if ($_POST) {
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
-    $status = $_POST['status'];
 
     if (empty($name) || empty($email)) {
         $message = "Name and email are required.";
     } else {
         try {
             $stmt = $pdo->prepare("
-                UPDATE users 
-                SET name = ?, email = ?, status = ? 
+                UPDATE users
+                SET name = ?, email = ?
                 WHERE id = ? AND role = 'technician'
             ");
-            $stmt->execute([$name, $email, $status, $user_id]);
+            $stmt->execute([$name, $email, $user_id]);
             $message = "Technician updated successfully!";
         } catch (Exception $e) {
             $message = "Error: Email may already be in use.";
@@ -134,13 +133,7 @@ if ($_POST) {
                 <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
             </div>
 
-            <div class="form-group">
-                <label>Status</label>
-                <select name="status">
-                    <option value="active" <?= $user['status'] === 'active' ? 'selected' : '' ?>>Active</option>
-                    <option value="inactive" <?= $user['status'] === 'inactive' ? 'selected' : '' ?>>Inactive</option>
-                </select>
-            </div>
+            
 
             <button type="submit">Update Technician</button>
             <button type="button" onclick="history.back()">Cancel</button>
