@@ -34,7 +34,6 @@ if ($_POST) {
             throw new Exception("Device(s), Type, and Date are required.");
         }
 
-        // Ensure all IDs are integers (security)
         $device_ids = array_map('intval', array_filter($device_ids));
         if (empty($device_ids)) {
             throw new Exception("Invalid device selection.");
@@ -49,8 +48,7 @@ if ($_POST) {
         ");
         $stmt->execute([$device_type, $device_ids_str, $maintenance_type, $scheduled_date, $assigned_to, $schedule_id]);
 
-        $message = "Schedule updated successfully!";
-        header("Refresh: 2; url=index.php");
+        header("Location: index.php");
         exit();
     } catch (Exception $e) {
         $message = "Error: " . $e->getMessage();
@@ -62,7 +60,7 @@ if ($_POST) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mapped-viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Maintenance Schedule - ComLogs</title>
     <style>
         body {
@@ -100,30 +98,34 @@ if ($_POST) {
             font-size: 1em;
             box-sizing: border-box;
         }
+        small {
+            display: block;
+            color: #666;
+            margin-top: 4px;
+            font-size: 0.9em;
+        }
+
+        /* BUTTON STYLES — MATCHES edit_log.php EXACTLY */
         button {
-            background: #eaeaea;
+            background: #3498db;
+            color: white;
             border: none;
             padding: 12px 24px;
             font-size: 1.1em;
             border-radius: 6px;
             cursor: pointer;
             transition: background 0.2s;
+            margin-right: 10px;
         }
         button:hover {
+            background: #2980b9;
+        }
+        button[type="button"] {
+            background: #eaeaea;
+            color: #333;
+        }
+        button[type="button"]:hover {
             background: #ddd;
-        }
-        .alert {
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-        .alert.success { background: #d8f8e1; color: #28a745; }
-        .alert.error { background: #f2dede; color: #da1616; }
-        small {
-            display: block;
-            color: #666;
-            margin-top: 4px;
-            font-size: 0.9em;
         }
     </style>
 </head>
@@ -132,12 +134,12 @@ if ($_POST) {
         <h2>✎ Edit Maintenance Schedule</h2>
 
         <?php if ($message): ?>
-            <div class="alert <?= strpos($message, 'Error') !== false ? 'error' : 'success' ?>">
+            <div style="padding:12px; margin-bottom:20px; border-radius:6px; background:#f2dede; color:#da1616;">
                 <?= htmlspecialchars($message) ?>
             </div>
         <?php endif; ?>
 
-        <form method="POST" id="scheduleForm">
+        <form method="POST">
             <div class="form-group">
                 <label for="device_type">Device Type *</label>
                 <select id="device_type" name="device_type" required>
@@ -150,27 +152,29 @@ if ($_POST) {
             <div class="form-group">
                 <label for="device_ids">Select Devices *</label>
                 <select id="device_ids" name="device_ids[]" multiple size="5" required>
-                    <!-- Options will be loaded by JavaScript -->
+                    <!-- Options loaded by JS -->
                 </select>
                 <small>Hold Ctrl (or Cmd) to select multiple devices.</small>
             </div>
 
             <div class="form-group">
                 <label for="maintenance_type">Maintenance Type *</label>
-                <input type="text" id="maintenance_type" name="maintenance_type" value="<?= htmlspecialchars($schedule['maintenance_type']) ?>" placeholder="e.g., Hardware Check, System Update" required>
+                <input type="text" name="maintenance_type" value="<?= htmlspecialchars($schedule['maintenance_type']) ?>" placeholder="e.g., Hardware Check, System Update" required>
             </div>
 
             <div class="form-group">
                 <label for="scheduled_date">Scheduled Date *</label>
-                <input type="date" id="scheduled_date" name="scheduled_date" value="<?= htmlspecialchars($schedule['scheduled_date']) ?>" required>
+                <input type="date" name="scheduled_date" value="<?= htmlspecialchars($schedule['scheduled_date']) ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="assigned_to">Assigned To</label>
-                <select id="assigned_to" name="assigned_to">
+                <select name="assigned_to">
                     <option value="">Unassigned</option>
                     <?php foreach ($users as $u): ?>
-                        <option value="<?= $u['id'] ?>" <?= $schedule['assigned_to'] == $u['id'] ? 'selected' : '' ?>><?= htmlspecialchars($u['name']) ?></option>
+                        <option value="<?= $u['id'] ?>" <?= $schedule['assigned_to'] == $u['id'] ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($u['name']) ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -180,7 +184,7 @@ if ($_POST) {
         </form>
     </div>
 
-<script>
+    <script>
         const computers = <?= json_encode($computers) ?>;
         const peripherals = <?= json_encode($peripherals) ?>;
         const selectedDeviceIds = "<?= $schedule['device_ids'] ?>".split(',').map(id => parseInt(id.trim()));
@@ -207,7 +211,6 @@ if ($_POST) {
         }
 
         deviceTypeSelect.addEventListener('change', loadDevices);
-        // Load initial devices based on current type
         loadDevices();
     </script>
 </body>
