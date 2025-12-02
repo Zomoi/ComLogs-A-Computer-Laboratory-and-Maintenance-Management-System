@@ -27,12 +27,12 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ComLogs: Computer Laboratory Management System</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1">
 </head>
 <body>
 <div class="container">
     <aside class="sidebar">
-        <img src="images/logo.png" class="logo">
+        <img src="Images/logo.png" class="logo">
         <nav>
             <ul>
                 <li class="active" data-target="dashboard">Dashboard</li>
@@ -174,6 +174,7 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
                 <button onclick="location.href='set_status.php?id=<?= $pc['id'] ?>&status=under_maintenance'">🛠️ Under Maintenance</button>
                 <button onclick="location.href='set_status.php?id=<?= $pc['id'] ?>&status=online'">✅ Repaired</button>
                 <button onclick="location.href='edit_computer.php?id=<?= $pc['id'] ?>'">Edit</button>
+                <button onclick="if(confirm('Delete this computer?')) location.href='delete_computer.php?id=<?= $pc['id'] ?>'">Delete</button>
               </td>
             </tr>
             <?php endforeach; ?>
@@ -221,6 +222,7 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
               <td><?= $statusText ?></td>
               <td>
                 <button onclick="location.href='edit_log.php?id=<?= $log['id'] ?>'">Edit</button>
+                <button onclick="if(confirm('Delete this log?')) location.href='delete_log.php?id=<?= $log['id'] ?>'">Delete</button>
               </td>
             </tr>
             <?php endforeach; ?>
@@ -334,6 +336,7 @@ $computers = $pdo->query("SELECT * FROM computers ORDER BY pc_name")->fetchAll()
         <td>
           <?php if ($canEdit): ?>
             <button onclick="location.href='edit_user.php?id=<?= $u['id'] ?>'">Edit</button>
+            <button onclick="if(confirm('Delete this user?')) location.href='delete_user.php?id=<?= $u['id'] ?>'">Delete</button>
           <?php endif; ?>
         </td>
       </tr>
