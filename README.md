@@ -86,7 +86,6 @@ Aligned with the official project proposal (IT-314), ComLogs implements all 8 re
 - **Database**: MySQL (relational schema with foreign keys and cascading deletes)
 - **Server**: Apache (via XAMPP)
 - **Security**: `password_hash()`, `htmlspecialchars()`, prepared statements, session-based auth
-- **Design Philosophy**: Clean, light-blue gradient UI with rounded cards, soft shadows, and intuitive workflows
 
 <hr>
 
